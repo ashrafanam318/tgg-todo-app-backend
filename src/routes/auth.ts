@@ -40,7 +40,7 @@ router.post('/login', async (req: Request, res: Response): Promise<void> => {
       process.env.JWT_SECRET || 'secret',
       { expiresIn: '2d' }
     );
-    res.json({ token });
+    res.status(200).json({ token });
   } catch (err) {
     const error = err as Error;
     res.status(500).json({ message: 'Server error', error: error.message });
