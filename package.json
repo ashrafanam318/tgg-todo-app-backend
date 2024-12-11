@@ -2,12 +2,17 @@
   "name": "tgg-todo-app-backend",
   "version": "1.0.0",
   "description": "REST API backend for the todo app",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "start": "node dist/server.js",
+  "dev": "nodemon src/server.ts",
+  "build": "tsc",
+  "lint": "eslint 'src/**/*.{ts,js}'",
+  "lint:fix": "eslint 'src/**/*.{ts,js}' --fix",
+  "format": "prettier --write 'src/**/*.{ts}'"
+},
   "keywords": [],
-  "author": "",
+  "author": "Shakil Ashraful Anam",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -17,5 +22,19 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.8.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.1",
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "nodemon": "^3.1.7",
+    "prettier": "^3.4.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
   }
 }
