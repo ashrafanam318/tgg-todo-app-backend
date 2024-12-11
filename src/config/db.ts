@@ -5,7 +5,9 @@ dotenv.config();
 
 const connectDB = async (): Promise<void> => {
   try {
-    await mongoose.connect(process.env.MONGO_URI || '');
+    await mongoose.connect(process.env.MONGO_URI || '', {
+      dbName: 'todoApp',
+    });
     console.log('db connected');
   } catch (error) {
     console.error('db connection error:', error);

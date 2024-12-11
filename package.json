@@ -4,13 +4,13 @@
   "description": "REST API backend for the todo app",
   "main": "dist/server.js",
   "scripts": {
-  "start": "node dist/server.js",
-  "dev": "nodemon src/server.ts",
-  "build": "tsc",
-  "lint": "eslint 'src/**/*.{ts,js}'",
-  "lint:fix": "eslint 'src/**/*.{ts,js}' --fix",
-  "format": "prettier --write 'src/**/*.{ts}'"
-},
+    "start": "node dist/server.js",
+    "dev": "nodemon src/server.ts",
+    "build": "tsc",
+    "lint": "eslint 'src/**/*.{ts,js}'",
+    "lint:fix": "eslint 'src/**/*.{ts,js}' --fix",
+    "format": "prettier --write 'src/**/*.{ts}'"
+  },
   "keywords": [],
   "author": "Shakil Ashraful Anam",
   "license": "ISC",
@@ -24,8 +24,10 @@
     "mongoose": "^8.8.4"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^22.10.1",
     "@typescript-eslint/eslint-plugin": "^8.18.0",
     "@typescript-eslint/parser": "^8.18.0",
