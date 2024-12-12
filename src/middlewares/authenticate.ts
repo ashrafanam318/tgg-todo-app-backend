@@ -2,10 +2,10 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
 export interface ProtectedRequest extends Request {
-  userId?: string
+  userId?: string;
 }
 
-export const authenticate = (
+const authenticate = (
   req: ProtectedRequest,
   res: Response,
   next: NextFunction
@@ -28,3 +28,5 @@ export const authenticate = (
     res.status(401).json({ message: 'Invalid auth token' });
   }
 };
+
+export default authenticate;

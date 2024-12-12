@@ -1,6 +1,6 @@
 import { Router, Response } from 'express';
 import ToDo, { IToDo } from '../models/ToDo';
-import { authenticate, ProtectedRequest } from '../middlewares/auth';
+import authenticate, { ProtectedRequest } from '../middlewares/authenticate';
 
 const router = Router();
 

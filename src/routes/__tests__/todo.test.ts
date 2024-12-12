@@ -39,8 +39,6 @@ describe('To-Do routes', () => {
       .get('/api/todos')
       .set('Authorization', `Bearer ${token}`);
 
-    // console.log(todosRes.body)
-
     const res = await request(expressApp)
       .put(`/api/todos/${todosRes.body[0]._id}`)
       .set('Authorization', `Bearer ${token}`)
