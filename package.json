@@ -7,9 +7,13 @@
     "start": "node dist/server.js",
     "dev": "nodemon src/server.ts",
     "build": "tsc",
-    "lint": "eslint 'src/**/*.{ts,js}'",
-    "lint:fix": "eslint 'src/**/*.{ts,js}' --fix",
-    "format": "prettier --write 'src/**/*.{ts}'"
+    "lint": "eslint 'src/**/*.{ts}'",
+    "lint:fix": "eslint 'src/**/*.{ts}' --fix",
+    "format": "prettier --write 'src/**/*.{ts}'",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.ts": ["eslint --fix", "prettier --write"]
   },
   "keywords": [],
   "author": "Shakil Ashraful Anam",
@@ -34,6 +38,8 @@
     "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11",
     "nodemon": "^3.1.7",
     "prettier": "^3.4.2",
     "ts-node": "^10.9.2",
