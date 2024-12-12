@@ -3,12 +3,16 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const connectDB = async (): Promise<void> => {
+const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI || '', {
-      dbName: 'todoApp',
+    const dbName =
+      (process.env.DB_NAME ?? 'todoApp') +
+      (process.env.NODE_ENV === 'test' ? '_test' : '');
+    const connectedBD = await mongoose.connect(process.env.MONGO_URI || '', {
+      dbName,
     });
-    console.log('db connected');
+    console.log(dbName + ' db connected');
+    return connectedBD;
   } catch (error) {
     console.error('db connection error:', error);
     process.exit(1);
