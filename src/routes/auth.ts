@@ -1,8 +1,13 @@
 import { Router, Request, Response } from 'express';
-import User from '../models/User';
+import User, { IUser } from '../models/User';
 import jwt from 'jsonwebtoken';
 
 const router = Router();
+
+const getToken = (user: IUser) =>
+  jwt.sign({ userId: user._id }, process.env.JWT_SECRET || 'secret', {
+    expiresIn: '2d',
+  });
 
 router.post('/register', async (req: Request, res: Response): Promise<void> => {
   try {
@@ -14,7 +19,8 @@ router.post('/register', async (req: Request, res: Response): Promise<void> => {
     }
     const user = new User({ username, password });
     await user.save();
-    res.status(201).json({ message: 'User registered successfully' });
+    const token = getToken(user);
+    res.status(201).json({ token });
   } catch (err) {
     const error = err as Error;
     res.status(500).json({ message: 'Server error', error: error.message });
@@ -35,11 +41,7 @@ router.post('/login', async (req: Request, res: Response): Promise<void> => {
       res.status(400).json({ message: 'Wrong password provided!' });
     }
 
-    const token = jwt.sign(
-      { userId: user._id },
-      process.env.JWT_SECRET || 'secret',
-      { expiresIn: '2d' }
-    );
+    const token = getToken(user);
     res.status(200).json({ token });
   } catch (err) {
     const error = err as Error;
